@@ -1,0 +1,49 @@
+@import "./css/buttons.css";
+@import "./css/fonts.css";
+/* @import "./css/variables.css"; */
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-neutral-100);
+  font-family: var(--font-nunito);
+  color: var(--color-neutral-600);
+}
+
+@theme {
+  /* 🎨 Colors */
+  --color-neutral-900: #163A34;
+  --color-neutral-600: #395652;
+  --color-neutral-300: #D0DCD9;
+  --color-neutral-200: #E0EBE3;
+  --color-neutral-100: #F8F5F1;
+  --color-neutral-0: #FFFFFF;
+
+  --color-orange-500: #FE9F80;
+  --color-teal-500: #49AC98;
+  --color-indigo-500: #897DDB;
+
+  /* 🅰️ Font family */
+  --font-nunito: "Nunito Sans", sans-serif;
+
+  /* Text Presets */
+  --text-1: 72px;
+  --text-1-tablet: 64px;
+  --text-1-mobile: 52px;
+  --text-2: 48px;
+  --text-2-mobile: 40px;
+  --text-3: 32px;
+  --text-4: 24px;
+  --text-5: 20px;
+  --text-6: 20px;
+  --text-7: 18px;
+  --text-8: 16px;
+  --text-9: 16px;
+  --text-10: 14px;
+
+
+
+}

@@ -1,0 +1,18 @@
+.btn {
+  border-radius: 10px;
+  /* padding: 1rem 3rem; */
+  font-size: var(--fs-preset-5);
+  color: var(--color-neutral-0);
+  background-color: var(--color-neutral-900);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--color-neutral-600);
+}
+
+.btn:active {
+  outline: 1px solid var(--color-neutral-900);
+  outline-offset: 2px;
+  background-color: var(--color-neutral-900);
+}
