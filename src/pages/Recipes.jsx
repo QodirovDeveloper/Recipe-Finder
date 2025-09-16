@@ -172,7 +172,7 @@ function Recipes()
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="sticky top-20 mx-auto w-[90%] max-w-md rounded-xl bg-red-100 border border-red-400/50 text-red-700 px-4 py-3 shadow-lg"
+            className="fixed top-20 mx-auto w-[90%] max-w-md rounded-xl bg-red-100 border border-red-400/50 text-red-700 px-4 py-3 shadow-lg"
           >
             <p className="text-sm">Faqat o'z retseptlaringizni tahrirlashingiz mumkin.</p>
             <p className="text-sm">Only your recipes can be edited.</p>

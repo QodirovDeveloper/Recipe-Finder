@@ -11,12 +11,12 @@ function Navbar()
 
   return (
     <motion.header
-      className="border-b border-black/20 bg-neutral-100/70 z-50 sticky top-0 backdrop-blur-sm"
+      className="border-b border-black/20 bg-neutral-100/70 z-99999 fixed left-0 right-0 top-0 backdrop-blur-sm"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto pl-3 pr-3 max-w-[1350px]">
+      <div className="container z-9999 mx-auto pl-3 pr-3 max-w-[1350px]">
         <div className="flex items-center justify-between text-neutral-900 py-2">
           <Link to="/">
             <img src="/images/logo.svg" className="sm:w-52 w-40" alt="logo" />
