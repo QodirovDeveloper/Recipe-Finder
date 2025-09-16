@@ -6,6 +6,7 @@ import Input from "../components/Input";
 import { GrEdit } from "react-icons/gr";
 import { MdDelete, MdSaveAlt } from "react-icons/md";
 import { FaCheckCircle, FaPlus } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Recipes()
 {
@@ -98,22 +99,62 @@ function Recipes()
     setShowAddForm(false);
   };
 
-  // Loading holati
   if (isPending)
   {
     return (
-      <div className="flex w-52 flex-col gap-4">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
+      <div className="container mx-auto max-w-[1250px] pl-3 pr-3">
+        <div className="container mx-auto max-w-[1250px] md:mt-14 mt-7 flex flex-col justify-center items-center">
+          <div className="space-y-1 flex flex-col justify-center items-center">
+            <div className="skeleton border border-black/25 md:w-[724px] w-[300px] h-[70px]"></div>
+            <div className="skeleton border border-black/25 md:w-[624px] w-[200px] h-[20px]"></div>
+            <div className="skeleton border border-black/25 md:w-[724px] w-[300px] h-[20px]"></div>
+            <div className="skeleton border border-black/25 md:w-[424px] w-[100px] h-[20px]"></div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between mt-14">
+          <div className="flex gap-2.5">
+            <div className="skeleton border border-black/25 md:w-[174px] w-[80px] h-[40px] "></div>
+            <div className="skeleton border border-black/25 md:w-[174px] w-[80px] h-[40px]"></div>
+          </div>
+          <div className="skeleton  border border-black/25 md:w-[174px] w-[80px] h-[40px]"></div>
+        </div>
+
+        <div className=" mt-6 grid gap-8 min-[1200px]:grid-cols-3 max-[1200px]:grid-cols-2 max-lg:grid-cols-1">
+
+          <div className="flex w-full  flex-col gap-1">
+            <div className="skeleton border border-black/25 w-full lg:h-[320px] max-lg:aspect-[7/5] max-sm:aspect-[7/6]"></div>
+            <div className="skeleton border border-black/25 h-4 w-28"></div>
+            <div className="skeleton border border-black/25 h-4 w-full"></div>
+            <div className="skeleton border border-black/25 h-4 w-full"></div>
+          </div>
+          <div className="flex w-full  flex-col gap-1">
+            <div className="skeleton border border-black/25 w-full lg:h-[320px] max-lg:aspect-[7/5] max-sm:aspect-[7/6]"></div>
+            <div className="skeleton border border-black/25 h-4 w-28"></div>
+            <div className="skeleton border border-black/25 h-4 w-full"></div>
+            <div className="skeleton border border-black/25 h-4 w-full"></div>
+          </div>
+          <div className="flex w-full  flex-col gap-1">
+            <div className="skeleton border border-black/25 w-full lg:h-[320px] max-lg:aspect-[7/5] max-sm:aspect-[7/6]"></div>
+            <div className="skeleton border border-black/25 h-4 w-28"></div>
+            <div className="skeleton border border-black/25 h-4 w-full"></div>
+            <div className="skeleton border border-black/25 h-4 w-full"></div>
+          </div>
+
+        </div>
       </div>
-    );
+    )
   }
+
   return (
     <main className="container mx-auto pl-3 pr-3 max-w-[1350px]">
-      <div className="flex flex-col md:items-center items-start">
-        <p className="lg:text-2 md:text-center md:text-1-tablet text-2-mobile leading-1 font-extrabold text-neutral-900 pt-16">
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-col md:items-center items-start"
+      >
+        <p className="lg:text-2 md:text-center md:text-1-tablet text-2-mobile leading-1 font-extrabold text-neutral-900 md:pt-16 pt-6">
           Explore our simple, healthy recipes
         </p>
         <p className="text-6 font-medium md:text-center max-w-[727px]  pt-4 pb-8">
@@ -122,24 +163,45 @@ function Recipes()
           ingredient, or simply scroll the list and let something delicious
           catch your eye.
         </p>
-      </div>
+      </motion.div>
 
-      {showWarning && (
-        <div className="sticky top-20 mx-auto w-[90%] max-w-md rounded-xl bg-red-100 border border-red-400/50 text-red-700 px-4 py-3 shadow-lg animate-bounce">
-          <p className="text-sm">Faqat o'z retseptlaringizni tahrirlashingiz mumkin.</p>
-          <p className="text-sm">Only your recipes can be edited.</p>
-        </div>
-      )}
+      <AnimatePresence>
+        {showWarning && (
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="sticky top-20 mx-auto w-[90%] max-w-md rounded-xl bg-red-100 border border-red-400/50 text-red-700 px-4 py-3 shadow-lg"
+          >
+            <p className="text-sm">Faqat o'z retseptlaringizni tahrirlashingiz mumkin.</p>
+            <p className="text-sm">Only your recipes can be edited.</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="flex sm:justify-between mb-4 items-start max-[728px]:flex-col max-sm:justify-center max-[728px]:space-y-2">
         <Filter onPrepChange={setPrepFilter} onCookChange={setCookFilter} />
         <Input onChange={setSearchTerm} />
       </div>
 
-      <div className="grid gap-8 min-[1200px]:grid-cols-3 max-[1200px]:grid-cols-2 max-lg:grid-cols-1">
+      <motion.div
+        layout
+        className="grid gap-8 min-[1200px]:grid-cols-3 max-[1200px]:grid-cols-2 max-lg:grid-cols-1"
+      >
         {filtered.map((recipe) => (
-          <div key={recipe.id} className="p-2 bg-neutral-0 rounded-md">
+          <motion.div
+            key={recipe.id}
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="p-2 bg-neutral-0 rounded-md shadow-sm"
+          >
             {recipe.image?.small && (
-              <img
+              <motion.img
+                whileHover={{ scale: 1.03 }}
                 src={recipe.image.small}
                 alt={recipe.title}
                 className="w-full lg:h-[320px] max-lg:aspect-[7/5] max-sm:aspect-[7/6] object-cover rounded mb-1"
@@ -165,82 +227,96 @@ function Recipes()
                 </div>
                 <div className="space-x-3">
                   {!recipe.isDefault && (
-                    <button
+                    <motion.button
+                      whileTap={{ scale: 0.9 }}
                       onClick={() => deletePost(`/${recipe.id}`, recipe.id)}
-                      className="px-1 py-1 rounded-full bg-red-600 text-neutral-0 cursor-pointer text-sm">
+                      className="px-1 py-1 rounded-full bg-red-600 text-neutral-0 cursor-pointer text-sm"
+                    >
                       <MdDelete />
-                    </button>
+                    </motion.button>
                   )}
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.9 }}
                     onClick={() => handleEditClick(recipe)}
                     className={`px-1 py-1 rounded-full ${recipe.isDefault
                       ? "bg-neutral-300 cursor-not-allowed text-neutral-0"
                       : "bg-neutral-300 text-neutral-900 cursor-pointer"
-                      }`}>
+                      }`}
+                  >
                     <GrEdit />
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
-            <Link
-              to={`/recipe/${recipe.id}`}>
-              <button className="w-full cursor-pointer py-3 bg-neutral-900 rounded-full text-neutral-0 text-sm">
+            <Link to={`/recipe/${recipe.id}`}>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                className="w-full cursor-pointer py-3 bg-neutral-900 rounded-full text-neutral-0 text-sm"
+              >
                 View Recipe
-              </button>
+              </motion.button>
             </Link>
 
+            <AnimatePresence>
+              {editId === recipe.id && (
+                <motion.div
+                  initial={{ opacity: 0, y: -15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  className="relative z-99999 w-full"
+                >
+                  <form
+                    onSubmit={(e) => handleEditSubmit(e, recipe)}
+                    className="absolute top-0 left-0 right-0 bg-neutral-0 p-4 grid gap-2 text-sm z-9999 rounded shadow-lg"
+                  >
+                    <input name="title" defaultValue={recipe.title} className="p-2 border rounded" />
+                    <input name="overview" defaultValue={recipe.overview} className="p-2 border rounded" />
+                    <input name="servings" type="number" defaultValue={recipe.servings} className="p-2 border rounded" />
+                    <input type="text" name="imageSmall" defaultValue={recipe.image} required className="p-2 border rounded" />
+                    <input name="prepMinutes" type="number" defaultValue={recipe.prepMinutes} className="p-2 border rounded" />
+                    <input name="cookMinutes" type="number" defaultValue={recipe.cookMinutes} className="p-2 border rounded" />
+                    <div className="flex gap-2">
+                      <button type="submit" className="px-3 py-1 bg-green-600 cursor-pointer text-neutral-0 rounded" >
+                        <MdSaveAlt className="inline-block" /> Save
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setEditId(null)}
+                        className="px-3 py-1 bg-gray-400 text-neutral-0 rounded cursor-pointer">
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
+      </motion.div>
 
-            {/*  */}
-            {editId === recipe.id && (
-              <div className="relative z-99999 w-full">
-                <form
-                  onSubmit={(e) => handleEditSubmit(e, recipe)}
-                  className="absolute top-0 left-0 right-0 bg-neutral-0 p-4 grid gap-2 text-sm z-9999 rounded shadow-lg">
-                  <input name="title" defaultValue={recipe.title} className="p-2 border rounded" />
-                  <input name="overview" defaultValue={recipe.overview} className="p-2 border rounded" />
-                  <input name="servings" type="number" defaultValue={recipe.servings} className="p-2 border rounded" />
-                  <input type="text" name="imageSmall" defaultValue={recipe.image} required className="p-2 border rounded" />
-                  <input name="prepMinutes" type="number" defaultValue={recipe.prepMinutes} className="p-2 border rounded" />
-                  <input name="cookMinutes" type="number" defaultValue={recipe.cookMinutes} className="p-2 border rounded" />
-                  <div className="flex gap-2">
-                    <button type="submit" className="px-3 py-1 bg-green-600 cursor-pointer text-neutral-0 rounded" >
-                      <MdSaveAlt className="inline-block"/> Save
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setEditId(null)}
-                      className="px-3 py-1 bg-gray-400 text-neutral-0 rounded cursor-pointer">
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </div>
-            )}
-
-
-          </div>
-        ))
-        }
-      </div >
-
-      {/* Add Recipe Form */}
-      < div className="mt-10" >
-        <button
+      <div className="mt-10">
+        <motion.button
+          whileTap={{ scale: 0.95 }}
           onClick={() => setShowAddForm((prev) => !prev)}
-          className="mb-4 btn  cursor-pointer">
+          className="mb-4 btn cursor-pointer"
+        >
           {showAddForm ? "Cancel" : (
             <span className="flex items-center gap-1">
               <FaPlus className="text-green-400" /> Add New Recipe
             </span>
           )}
+        </motion.button>
 
-        </button>
-
-        {
-          showAddForm && (
-            <form
+        <AnimatePresence>
+          {showAddForm && (
+            <motion.form
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
               onSubmit={handleAddRecipe}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 p-4 border rounded bg-neutral-0">
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 p-4 border rounded bg-neutral-0"
+            >
               <input type="text" name="title" placeholder="Title" required className="p-2 border rounded" />
               <input type="text" name="slug" placeholder="e.g. pasta-salad" required className="p-2 border rounded" />
               <input type="text" name="overview" placeholder="Brief description" required className="p-2 border rounded" />
@@ -253,11 +329,11 @@ function Recipes()
               <button type="submit" className="col-span-full px-4 py-2 btn text-neutral-0 rounded">
                 <FaCheckCircle /> Add Recipe
               </button>
-            </form>
-          )
-        }
-      </div >
-    </main >
+            </motion.form>
+          )}
+        </AnimatePresence>
+      </div>
+    </main>
   );
 }
 
