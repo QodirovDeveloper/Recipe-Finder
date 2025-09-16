@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
+import bgPattern from "./images/pattern-squiggle-1.svg"
 
-function Home() {
+function Home()
+{
   return (
     <main>
       {/* Hero section */}
-      <div className="bg-[url('./images/pattern-squiggle-1.svg')] bg-center bg-cover bg-no-repeat">
+      <div className="bg-center bg-cover bg-no-repeat"
+        style={{ backgroundImage: `url(${bgPattern})` }}>
         <div className="container mx-auto pl-3 pr-3 md:pl-8 md:pr-8 max-w-[1350px] flex flex-col md:items-center max-md:items-start">
 
           {/* Title */}
@@ -155,59 +158,59 @@ function Home() {
         </div>
       </div>
       <div className="container mx-auto pl-3 pr-3 max-w-[1350px]">
-      <motion.div
-        className="bg-neutral-200 lg:py-24 py-11 -z-30 text-center rounded-2xl relative"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <div className="z-50">
-          <motion.p
-            className="md:text-2 text-2-mobile font-extrabold text-neutral-900"
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            Ready to cook smarter?
-          </motion.p>
-
-          <motion.p
-            className="pt-2.5 pb-8 font-medium text-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-          >
-            Hit the button, pick a recipe, and get dinner on the table—fast.
-          </motion.p>
-
-          <motion.button
-            className="btn px-6 font-bold text-7"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            Browse recipes
-          </motion.button>
-        </div>
-
         <motion.div
-          className="absolute left-0 bottom-0 -z-10 sm:flex hidden"
-          initial={{ x: -100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          className="bg-neutral-200 lg:py-24 py-11 -z-30 text-center rounded-2xl relative"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
-          <img className="max-lg:w-40" src="/images/pattern-fork.svg" alt="pattern-fork" />
-        </motion.div>
+          <div className="z-50">
+            <motion.p
+              className="md:text-2 text-2-mobile font-extrabold text-neutral-900"
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              Ready to cook smarter?
+            </motion.p>
 
-        <motion.div
-          className="absolute top-0 right-0 -z-10 sm:flex hidden"
-          initial={{ x: 100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          <img className="max-lg:w-40" src="/images/pattern-knife.svg" alt="pattern-knife" />
+            <motion.p
+              className="pt-2.5 pb-8 font-medium text-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              Hit the button, pick a recipe, and get dinner on the table—fast.
+            </motion.p>
+
+            <motion.button
+              className="btn px-6 font-bold text-7"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              Browse recipes
+            </motion.button>
+          </div>
+
+          <motion.div
+            className="absolute left-0 bottom-0 -z-10 sm:flex hidden"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
+            <img className="max-lg:w-40" src="/images/pattern-fork.svg" alt="pattern-fork" />
+          </motion.div>
+
+          <motion.div
+            className="absolute top-0 right-0 -z-10 sm:flex hidden"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
+            <img className="max-lg:w-40" src="/images/pattern-knife.svg" alt="pattern-knife" />
+          </motion.div>
         </motion.div>
-      </motion.div>
 
       </div>
     </main>
