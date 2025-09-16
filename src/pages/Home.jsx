@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import bgPattern from "./images/pattern-squiggle-1.svg"
 
 function Home()
 {
@@ -7,7 +6,7 @@ function Home()
     <main>
       {/* Hero section */}
       <div className="bg-center bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${bgPattern})` }}>
+        style={{ backgroundImage: "url('/images/pattern-squiggle-1.svg')" }}>
         <div className="container mx-auto pl-3 pr-3 md:pl-8 md:pr-8 max-w-[1350px] flex flex-col md:items-center max-md:items-start">
 
           {/* Title */}
