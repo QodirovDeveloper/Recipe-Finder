@@ -1,5 +1,3 @@
-// src/components/RecipeCard.jsx
-
 function RecipeCard({ recipe, onDelete }) {
   return (
     <div className="border p-4 rounded shadow-md">

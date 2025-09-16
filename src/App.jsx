@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { About, Home, Recipe, Recipes } from "./pages";
 import MainLayout from "./layout/MainLayout";
-// import { action as HomeAction} from "./pages/Home";
 
 function App() {
   const routes = createBrowserRouter([
@@ -12,7 +11,6 @@ function App() {
         {
           index: true,
           element: <Home />,
-          // loader: HomeAction,
         },
         {
           path: "/about",
