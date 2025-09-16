@@ -154,7 +154,7 @@ function Recipes()
         transition={{ duration: 0.6 }}
         className="flex flex-col md:items-center items-start"
       >
-        <p className="lg:text-2 md:text-center md:text-1-tablet text-2-mobile leading-1 font-extrabold text-neutral-900 md:pt-16 pt-6">
+        <p className="lg:text-2 md:text-center md:text-2 text-2-mobile leading-1 font-extrabold text-neutral-900 md:pt-20 pt-16">
           Explore our simple, healthy recipes
         </p>
         <p className="text-6 font-medium md:text-center max-w-[727px]  pt-4 pb-8">
