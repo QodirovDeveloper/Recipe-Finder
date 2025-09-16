@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
-function Footer() {
+function Footer()
+{
   return (
     <footer className="container mx-auto pl-3 pr-3 max-w-[1350px]">
 
@@ -13,9 +14,9 @@ function Footer() {
       >
         <p className="max-sm:hidden">Made with ❤️ and 🥑</p>
         <div className="flex items-center gap-6">
-          <a href="#"><img src="./images/icon-instagram.svg" alt="icon-instagram" /></a>
-          <a href="#"><img src="./images/icon-bluesky.svg" alt="icon-bluesky" /></a>
-          <a href="#"><img src="./images/icon-tiktok.svg" alt="icon-tiktok" /></a>
+          <a href="#"><img src="/images/icon-instagram.svg" alt="icon-instagram" /></a>
+          <a href="#"><img src="/images/icon-bluesky.svg" alt="icon-bluesky" /></a>
+          <a href="#"><img src="/images/icon-tiktok.svg" alt="icon-tiktok" /></a>
         </div>
         <p className="sm:hidden">Made with ❤️ and 🥑</p>
       </motion.div>
