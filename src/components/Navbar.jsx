@@ -65,9 +65,9 @@ function Navbar()
             </ul>
           </nav>
           <div className="">
-            <button className="btn py-3 px-4 font-bold md:flex hidden">
+            <Link to={"/recipes"} className="btn py-3 px-4 font-bold md:flex hidden">
               Browse recipes
-            </button>
+            </Link>
 
             <button
               onClick={handleToggle}
