@@ -21,7 +21,7 @@ function Recipe()
   if (!recipe)
     return (
       // <p className="animate-pulse text-gray-500 text-center mt-8">Loading...</p>
-      <div className="container mx-auto max-w-[1350px] mt-20 pl-3 pr-3">
+      <div className="container mx-auto max-w-[1350px] sm:mt-20 mt-16 pl-3 pr-3">
         <div className="skeleton  border border-black/25 mb-2 h-[20px] w-[300px]"></div>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="">
@@ -52,8 +52,8 @@ function Recipe()
 
   return (
     <>
-      <div className="container mx-auto max-w-[1350px] mt-10 pl-3 pr-3">
-        <Link to={"/recipes"} className="text-neutral-900 font-semibold">
+      <div className="container mx-auto max-w-[1350px] sm:mt-20 mt-16 pl-3 pr-3">
+        <Link to={"/recipes"} className="text-neutral-900 font-semibold sm:text-5 text-8">
           <span className="text-neutral-500">Recipes / </span>
           {recipe.title}
         </Link>

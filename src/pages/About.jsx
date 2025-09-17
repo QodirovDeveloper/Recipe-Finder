@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function About()
 {
@@ -245,13 +246,12 @@ function About()
       </div>
       <div className="container mx-auto pl-3 pr-3 max-w-[1350px]">
         <motion.div
-          className="bg-neutral-200 lg:py-24 py-11 -z-30 text-center rounded-2xl relative"
+          className="bg-neutral-200 lg:py-24 py-11 -z-30 text-center rounded-2xl"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className="z-50">
+          viewport={{ once: true }}>
+          <div className="">
             <motion.p
               className="md:text-2 text-2-mobile font-extrabold text-neutral-900"
               initial={{ scale: 0.8, opacity: 0 }}
@@ -270,32 +270,31 @@ function About()
               Hit the button, pick a recipe, and get dinner on the table—fast.
             </motion.p>
 
-            <motion.button
-              className="btn px-6 font-bold text-7"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              Browse recipes
-            </motion.button>
+            <Link to="/recipes">
+              <p className="btn px-6 font-bold text-7">
+                Browse recipes
+              </p>
+            </Link>
+          </div>
+          <div className="relative">
+            <motion.div
+              className="absolute left-0 -bottom-16 max-[1095px]:hidden"
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}>
+              <img className="max-lg:w-40" src="/images/pattern-fork.svg" alt="pattern-fork" />
+            </motion.div>
           </div>
 
-          <motion.div
-            className="absolute left-0 bottom-0 -z-10 sm:flex hidden"
-            initial={{ x: -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            <img className="max-lg:w-40" src="/images/pattern-fork.svg" alt="pattern-fork" />
-          </motion.div>
-
-          <motion.div
-            className="absolute top-0 right-0 -z-10 sm:flex hidden"
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
-            <img className="max-lg:w-40" src="/images/pattern-knife.svg" alt="pattern-knife" />
-          </motion.div>
+          <div className="relative">
+            <motion.div
+              className="absolute -bottom-30 right-0 max-[1095px]:hidden"
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}>
+              <img className="max-lg:w-40" src="/images/pattern-knife.svg" alt="pattern-knife" />
+            </motion.div>
+          </div>
         </motion.div>
 
       </div>

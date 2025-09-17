@@ -73,7 +73,7 @@ function Navbar()
               onClick={handleToggle}
               className="sm:py-3 sm:px-4 py-2 px-3 bg-neutral-200 rounded-sm md:hidden cursor-pointer"
             >
-              <img src="./images/icon-hamburger-menu.svg" alt="menu" />
+              <img src="/images/icon-hamburger-menu.svg" alt="menu" />
             </button>
           </div>
         </div>
