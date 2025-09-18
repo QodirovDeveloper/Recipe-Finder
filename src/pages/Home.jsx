@@ -51,19 +51,20 @@ function Home()
           </motion.button>
 
           {/* Hero image */}
-          <motion.div
+          <div
             className="rounded-xl border-8 border-white my-16"
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            viewport={{ once: true }}
+
           >
-            <img
-              className="rounded-xl"
+            <motion.img
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="rounded-md"
               src="./images/image-home-hero-large.webp"
               alt="image-home-hero-large"
             />
-          </motion.div>
+          </div>
         </div>
       </div>
 
