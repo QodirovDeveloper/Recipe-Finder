@@ -69,15 +69,9 @@ function Home()
 
       {/* Features section */}
       <div className="container mx-auto pl-3 pr-3 max-w-[1350px] md:pl-8 md:pr-8">
-        <motion.p
-          className="text-center text-2 font-extrabold pb-10 max-md:text-2-mobile text-neutral-900"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
+        <p className="text-center text-2 font-extrabold pb-10 max-md:text-2-mobile text-neutral-900">
           What you’ll get
-        </motion.p>
+        </p>
 
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-7 sm:pb-20 pb-14">
           {[
