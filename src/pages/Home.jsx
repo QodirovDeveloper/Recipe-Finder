@@ -53,7 +53,6 @@ function Home()
           {/* Hero image */}
           <div
             className="rounded-xl border-8 border-white my-16"
-
           >
             <motion.img
               initial={{ opacity: 0, y: 60 }}
@@ -150,8 +149,8 @@ function Home()
               className="rounded-2xl md:mb-16 mb-14"
               src="images/image-home-real-life-small.webp"
               alt="image-home-real-life-small"
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
               viewport={{ once: true }}
             />
