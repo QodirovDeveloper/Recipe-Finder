@@ -52,52 +52,196 @@ function Recipes()
     setEditId(editId === recipe.id ? null : recipe.id);
   };
 
-  const handleEditSubmit = (e, recipe) =>
+  // const handleEditSubmit = async (e, recipe) =>
+  // {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const imageFile = form.imageFile.files?.[0];
+  //   let imageUrl = form.imageSmall.value;
+
+  //   if (imageFile)
+  //   {
+  //     const formData = new FormData();
+  //     formData.append("image", imageFile);
+  //     const imgbbApiKey = "663c531048206cf28d38660897f6399f";
+  //     const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+
+  //     try
+  //     {
+  //       const res = await fetch(imgbbUrl, {
+  //         method: "POST",
+  //         body: formData,
+  //       });
+
+  //       const data = await res.json();
+  //       imageUrl = data.data.url;
+  //     } catch (err)
+  //     {
+  //       console.error("Rasmni yangilashda xatolik:", err);
+  //     }
+  //   }
+
+  //   const updated = {
+  //     ...recipe,
+  //     title: form.title.value,
+  //     overview: form.overview.value,
+  //     image: {
+  //       small: imageUrl,
+  //       large: imageUrl,
+  //     },
+  //     prepMinutes: Number(form.prepMinutes.value),
+  //     cookMinutes: Number(form.cookMinutes.value),
+  //     servings: Number(form.servings.value),
+  //   };
+  //   putData(`/${recipe.id}`, updated);
+  //   setEditId(null);
+  // };
+
+
+  const handleEditSubmit = async (e, recipe) =>
   {
     e.preventDefault();
     const form = e.target;
+    const imageFile = form.imageFile?.files?.[0];
+
+    let imageUrl = recipe.image?.small; // Eski URL default holatda
+
+    // Agar yangi rasm tanlangan bo‘lsa, uni imgbb orqali yuklaymiz
+    if (imageFile)
+    {
+      const formData = new FormData();
+      formData.append("image", imageFile);
+
+      try
+      {
+        const res = await fetch(`https://api.imgbb.com/1/upload?key=663c531048206cf28d38660897f6399f`, {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await res.json();
+        imageUrl = data.data?.url;
+      } catch (error)
+      {
+        console.error("Image upload error:", error);
+        return alert("Image upload failed ❌");
+      }
+    }
 
     const updated = {
       ...recipe,
       title: form.title.value,
       overview: form.overview.value,
-      image: {
-        small: form.imageSmall.value,
-        large: form.imageSmall.value,
-      },
       prepMinutes: Number(form.prepMinutes.value),
       cookMinutes: Number(form.cookMinutes.value),
+      servings: Number(form.servings.value),
+      image: {
+        small: imageUrl,
+        large: imageUrl,
+      },
     };
 
     putData(`/${recipe.id}`, updated);
     setEditId(null);
   };
 
-  const handleAddRecipe = (e) =>
+
+
+  // const handleEditSubmit = (e, recipe) =>
+  // {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const updated = {
+  //     ...recipe,
+  //     title: form.title.value,
+  //     overview: form.overview.value,
+  //     image: {
+  //       small: form.imageSmall.value,
+  //       large: form.imageSmall.value,
+  //     },
+  //     prepMinutes: Number(form.prepMinutes.value),
+  //     cookMinutes: Number(form.cookMinutes.value),
+  //   };
+  //   putData(`/${recipe.id}`, updated);
+  //   setEditId(null);
+  // };
+
+  // ==========================
+  // ==========================
+
+  // const handleAddRecipe = (e) =>
+  // {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const newRecipe = {
+  //     title: form.title.value,
+  //     slug: form.slug.value,
+  //     overview: form.overview.value,
+  //     prepMinutes: Number(form.prepMinutes.value),
+  //     cookMinutes: Number(form.cookMinutes.value),
+  //     image: {
+  //       small: form.imageSmall.value,
+  //       large: form.imageSmall.value,
+  //     },
+  //     servings: Number(form.servings.value),
+  //     ingredients: form.ingredients.value.split(",").map((i) => i.trim()),
+  //     instructions: form.instructions.value.split(",").map((i) => i.trim()),
+  //     isDefault: false,
+  //   };
+
+  //   postData("/", newRecipe);
+  //   form.reset();
+  //   setShowAddForm(false);
+  // };
+
+  const handleAddRecipe = async (e) =>
   {
     e.preventDefault();
     const form = e.target;
 
-    const newRecipe = {
-      title: form.title.value,
-      slug: form.slug.value,
-      overview: form.overview.value,
-      prepMinutes: Number(form.prepMinutes.value),
-      cookMinutes: Number(form.cookMinutes.value),
-      image: {
-        small: form.imageSmall.value,
-        large: form.imageSmall.value,
-      },
-      servings: Number(form.servings.value),
-      ingredients: form.ingredients.value.split(",").map((i) => i.trim()),
-      instructions: form.instructions.value.split(",").map((i) => i.trim()),
-      isDefault: false,
-    };
+    const imageFile = form.imageFile.files[0];
+    const formData = new FormData();
+    formData.append("image", imageFile);
 
-    postData("/", newRecipe);
-    form.reset();
-    setShowAddForm(false);
+    const imgbbApiKey = "663c531048206cf28d38660897f6399f";
+    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+
+    try
+    {
+      const res = await fetch(imgbbUrl, {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      const imageUrl = data.data.url;
+
+      const newRecipe = {
+        title: form.title.value,
+        slug: form.slug.value,
+        overview: form.overview.value,
+        prepMinutes: Number(form.prepMinutes.value),
+        cookMinutes: Number(form.cookMinutes.value),
+        image: {
+          small: imageUrl,
+          large: imageUrl,
+        },
+        servings: Number(form.servings.value),
+        ingredients: form.ingredients.value.split(",").map((i) => i.trim()),
+        instructions: form.instructions.value.split(",").map((i) => i.trim()),
+        isDefault: false,
+      };
+
+      postData("/", newRecipe);
+      form.reset();
+      setShowAddForm(false);
+    } catch (err)
+    {
+      console.error("Rasm yuklashda xatolik:", err);
+    }
   };
+
+
 
   if (isPending)
   {
@@ -267,12 +411,12 @@ function Recipes()
                 >
                   <form
                     onSubmit={(e) => handleEditSubmit(e, recipe)}
-                    className="absolute top-0 left-0 right-0 bg-neutral-0 p-4 grid gap-2 text-sm z-9999 rounded shadow-lg"
-                  >
+                    className="absolute top-0 left-0 right-0 bg-neutral-0 p-4 grid gap-2 text-sm z-9999 rounded shadow-lg" >
                     <input name="title" defaultValue={recipe.title} className="p-2 border rounded" />
                     <input name="overview" defaultValue={recipe.overview} className="p-2 border rounded" />
                     <input name="servings" type="number" defaultValue={recipe.servings} className="p-2 border rounded" />
-                    <input type="text" name="imageSmall" defaultValue={recipe.image} required className="p-2 border rounded" />
+                    {/* <input type="text" name="imageSmall" defaultValue={recipe.image} required className="p-2 border rounded" /> */}
+                    <input type="file" name="imageFile" accept="image/*" className="p-2 border rounded" />
                     <input name="prepMinutes" type="number" defaultValue={recipe.prepMinutes} className="p-2 border rounded" />
                     <input name="cookMinutes" type="number" defaultValue={recipe.cookMinutes} className="p-2 border rounded" />
                     <div className="flex gap-2">
@@ -322,7 +466,8 @@ function Recipes()
               <input type="text" name="overview" placeholder="Brief description" required className="p-2 border rounded" />
               <input type="number" name="prepMinutes" placeholder="Prep Minutes" required className="p-2 border rounded" />
               <input type="number" name="cookMinutes" placeholder="Cook Minutes" required className="p-2 border rounded" />
-              <input type="text" name="imageSmall" placeholder="Image URL (small)" required className="p-2 border rounded" />
+              {/* <input type="text" name="imageSmall" placeholder="Image URL (small)" required className="p-2 border rounded" /> */}
+              <input type="file" name="imageFile" accept="image/*" required className="p-2 border rounded" />
               <input type="number" name="servings" placeholder="Servings " required className="p-2 border rounded col-span-full" />
               <textarea name="ingredients" placeholder="e.g. flour, sugar, eggs" required className="p-2 border rounded col-span-full" />
               <textarea name="instructions" placeholder="e.g. Mix all ingredients, bake for 20 minutes..." required className="p-2 border rounded col-span-full" />

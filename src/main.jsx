@@ -5,7 +5,10 @@ import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
   <>
-    <ToastContainer />
+    <ToastContainer
+      position="top-right"
+      style={{ top: "80px" }}
+    />
     <App />
   </>
 );

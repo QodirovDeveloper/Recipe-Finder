@@ -17,7 +17,7 @@ function useDatabase() {
       toast("Recipe added ✅");
     } catch (error) {
       setError(error.message);
-      toast(error.message || "Something went wrong ❌");
+      toast(error.message || "Something went wrong ❌"); 
     } finally {
       setIsPending(false);
     }
