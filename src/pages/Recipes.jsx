@@ -52,61 +52,15 @@ function Recipes()
     setEditId(editId === recipe.id ? null : recipe.id);
   };
 
-  // const handleEditSubmit = async (e, recipe) =>
-  // {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const imageFile = form.imageFile.files?.[0];
-  //   let imageUrl = form.imageSmall.value;
-
-  //   if (imageFile)
-  //   {
-  //     const formData = new FormData();
-  //     formData.append("image", imageFile);
-  //     const imgbbApiKey = "663c531048206cf28d38660897f6399f";
-  //     const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
-
-  //     try
-  //     {
-  //       const res = await fetch(imgbbUrl, {
-  //         method: "POST",
-  //         body: formData,
-  //       });
-
-  //       const data = await res.json();
-  //       imageUrl = data.data.url;
-  //     } catch (err)
-  //     {
-  //       console.error("Rasmni yangilashda xatolik:", err);
-  //     }
-  //   }
-
-  //   const updated = {
-  //     ...recipe,
-  //     title: form.title.value,
-  //     overview: form.overview.value,
-  //     image: {
-  //       small: imageUrl,
-  //       large: imageUrl,
-  //     },
-  //     prepMinutes: Number(form.prepMinutes.value),
-  //     cookMinutes: Number(form.cookMinutes.value),
-  //     servings: Number(form.servings.value),
-  //   };
-  //   putData(`/${recipe.id}`, updated);
-  //   setEditId(null);
-  // };
-
-
   const handleEditSubmit = async (e, recipe) =>
   {
     e.preventDefault();
     const form = e.target;
     const imageFile = form.imageFile?.files?.[0];
 
-    let imageUrl = recipe.image?.small; // Eski URL default holatda
+    let imageUrl = recipe.image?.small;
 
-    // Agar yangi rasm tanlangan bo‘lsa, uni imgbb orqali yuklaymiz
+    // imgbb
     if (imageFile)
     {
       const formData = new FormData();
@@ -144,55 +98,6 @@ function Recipes()
     putData(`/${recipe.id}`, updated);
     setEditId(null);
   };
-
-
-
-  // const handleEditSubmit = (e, recipe) =>
-  // {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const updated = {
-  //     ...recipe,
-  //     title: form.title.value,
-  //     overview: form.overview.value,
-  //     image: {
-  //       small: form.imageSmall.value,
-  //       large: form.imageSmall.value,
-  //     },
-  //     prepMinutes: Number(form.prepMinutes.value),
-  //     cookMinutes: Number(form.cookMinutes.value),
-  //   };
-  //   putData(`/${recipe.id}`, updated);
-  //   setEditId(null);
-  // };
-
-  // ==========================
-  // ==========================
-
-  // const handleAddRecipe = (e) =>
-  // {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const newRecipe = {
-  //     title: form.title.value,
-  //     slug: form.slug.value,
-  //     overview: form.overview.value,
-  //     prepMinutes: Number(form.prepMinutes.value),
-  //     cookMinutes: Number(form.cookMinutes.value),
-  //     image: {
-  //       small: form.imageSmall.value,
-  //       large: form.imageSmall.value,
-  //     },
-  //     servings: Number(form.servings.value),
-  //     ingredients: form.ingredients.value.split(",").map((i) => i.trim()),
-  //     instructions: form.instructions.value.split(",").map((i) => i.trim()),
-  //     isDefault: false,
-  //   };
-
-  //   postData("/", newRecipe);
-  //   form.reset();
-  //   setShowAddForm(false);
-  // };
 
   const handleAddRecipe = async (e) =>
   {
@@ -316,7 +221,7 @@ function Recipes()
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed top-20 mx-auto w-[90%] max-w-md rounded-xl bg-red-100 border border-red-400/50 text-red-700 px-4 py-3 shadow-lg"
+            className="fixed top-20 mx-auto w-[90%] z-999999 max-w-md rounded-xl bg-red-100 border border-red-400/50 text-red-700 px-4 py-3 shadow-lg"
           >
             <p className="text-sm">Faqat o'z retseptlaringizni tahrirlashingiz mumkin.</p>
             <p className="text-sm">Only your recipes can be edited.</p>
