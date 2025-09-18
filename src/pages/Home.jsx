@@ -53,8 +53,8 @@ function Home()
           {/* Hero image */}
           <motion.div
             className="rounded-xl border-8 border-white my-16"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             viewport={{ once: true }}
           >
@@ -69,9 +69,15 @@ function Home()
 
       {/* Features section */}
       <div className="container mx-auto pl-3 pr-3 max-w-[1350px] md:pl-8 md:pr-8">
-        <p className="text-center text-2 font-extrabold pb-10 max-md:text-2-mobile text-neutral-900">
+        <motion.p
+          className="text-center text-2 font-extrabold pb-10 max-md:text-2-mobile text-neutral-900"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           What you’ll get
-        </p>
+        </motion.p>
 
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-7 sm:pb-20 pb-14">
           {[
